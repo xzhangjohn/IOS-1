@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+//init card object
 
     enum Suit: Character{
         case Spades = "♠", Hearts = "♡", Diamonds = "♢", Clubs = "♣"

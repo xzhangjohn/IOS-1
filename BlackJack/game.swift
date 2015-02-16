@@ -2,11 +2,12 @@
 //  game.swift
 //  BlackJack
 //
-//  Created by 鸿烨 弓 on 15/2/15.
+//  Created by Xiao Zhang on 15/2/15.
 //  Copyright (c) 2015年 XiaoZhang. All rights reserved.
 //
 
 import Foundation
+// Cards' Actions
 
 class game{
     var allcard = [BlackJackCard]()
@@ -16,6 +17,8 @@ class game{
     init() {
         shuffle()
     }
+    
+    //Create a deck of card
     func shuffle() {
         let suits = [Suit.Spades, Suit.Hearts, Suit.Diamonds, Suit.Clubs]
         let ranks = [Rank.Ace, Rank.Two, Rank.Three, Rank.Four, Rank.Five, Rank.Six, Rank.Seven, Rank.Eight, Rank.Nine, Rank.Ten, Rank.Jack, Rank.Queen, Rank.King]
@@ -27,15 +30,12 @@ class game{
         }
     }
     
+    //Add a new card to dealer or player
     func addcard() -> BlackJackCard{
         var randomindex = Int(arc4random_uniform(UInt32(allcard.count)))
         var newcard = allcard[randomindex]
         allcard.removeAtIndex(randomindex)
         return newcard
-    }
-    
-    func daddcard(){
-
     }
     
 }

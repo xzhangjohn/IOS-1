@@ -17,6 +17,7 @@ class ViewController: UIViewController {
     var pscore = 0
     var newgame: game!
     var gamecount = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         yourmoney.text = "Money: \(initmoney)"
@@ -45,6 +46,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var total: UILabel!
     @IBOutlet weak var stand: UIButton!
     @IBOutlet weak var Deal: UIButton!
+    
+    @IBOutlet weak var inputbet: UILabel!
     @IBAction func Deal(sender: AnyObject) {
         gamecount += 1
         if (gamecount > 4){
@@ -85,6 +88,7 @@ class ViewController: UIViewController {
         stand.hidden = false
         total.hidden = false
         yourbet.hidden = false
+        inputbet.hidden = true
         pscore = caculatescore(newgame.pcard)
         dscore = caculatescore(newgame.dcard)
         total.text = "Total: \(pscore)"
@@ -110,7 +114,9 @@ class ViewController: UIViewController {
         gameover.hidden = true
         Deal.hidden = false
         inputmoney.hidden = false
+        inputbet.hidden = false
         yourbet.hidden = true
+        conclusion.hidden = true
         viewDidLoad()
     }
     
@@ -165,6 +171,7 @@ class ViewController: UIViewController {
         }
         dealercard.text = dcarddetail
     }
+    
     func stopgame (){
         showdealer()
         Deal.hidden = false
@@ -173,6 +180,7 @@ class ViewController: UIViewController {
         stand.hidden = true
         conclusion.hidden = false
         yourbet.hidden = true
+        inputbet.hidden = false
         dtotal.hidden = false
         dtotal.text = "Total: \(dscore)"
         if (conclusion.text == "You lose"){
@@ -186,6 +194,7 @@ class ViewController: UIViewController {
             gameover.hidden = false
             Deal.hidden = true
             inputmoney.hidden = true
+            inputbet.hidden = true
         }
     }
     

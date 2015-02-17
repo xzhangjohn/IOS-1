@@ -89,6 +89,7 @@ class ViewController: UIViewController {
         total.hidden = false
         yourbet.hidden = false
         inputbet.hidden = true
+        dtotal.hidden = true
         pscore = caculatescore(newgame.pcard)
         dscore = caculatescore(newgame.dcard)
         total.text = "Total: \(pscore)"

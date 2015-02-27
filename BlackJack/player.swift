@@ -7,3 +7,14 @@
 //
 
 import Foundation
+class player: hand {
+    var pcard: [BlackJackCard]
+    var pscore: Int
+    var pmoney: Int
+    init(pcard: [BlackJackCard], pscore: Int, pmoney: Int){
+        self.pcard = pcard
+        self.pscore = pscore
+        self.pmoney = pmoney
+        super.init()
+    }
+}

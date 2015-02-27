@@ -9,19 +9,25 @@
 import UIKit
 
 class ViewController: UIViewController {
-    var initmoney = 100
     var betmoney = 0
     var dcarddetail = ""
     var pcarddetail = ""
     var dscore = 0
     var pscore = 0
-    var newgame: game!
     var gamecount = 0
+    var newshoe: shoe!
+    var newdealer: dealer!
+    var fplayer: player!
+    var splayer: player!
+    var initmoney = 100
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        yourmoney.text = "Money: \(initmoney)"
-        newgame = game()
+        newshoe = shoe(decknum: 3)
+        newdealer = dealer(dcard: [],dscore: 0)
+        fplayer = player(pcard: [],pscore: 0, pmoney: 100)
+        splayer = player(pcard: [],pscore: 0, pmoney: 100)
+        yourmoney.text = "Money: \(fplayer.pmoney)"
         hit.hidden = true
         stand.hidden = true
         total.hidden = true
@@ -52,14 +58,14 @@ class ViewController: UIViewController {
         gamecount += 1
         if (gamecount > 4){
             gamecount = 0
-            newgame.shuffle()
+            newshoe.initshoe(3)
         }
-        newgame.dcard.removeAll()
-        newgame.pcard.removeAll()
-        newgame.pcard.append(newgame.addcard())
-        newgame.pcard.append(newgame.addcard())
-        newgame.dcard.append(newgame.addcard())
-        newgame.dcard.append(newgame.addcard())
+        newdealer.dcard.removeAll(keepCapacity: false)
+        fplayer.pcard.removeAll(keepCapacity: false)
+        fplayer.pcard.append(fplayer.addcard(newshoe.shoecard))
+        fplayer.pcard.append(fplayer.addcard(newshoe.shoecard))
+        newdealer.dcard.append(newdealer.addcard(newshoe.shoecard))
+        newdealer.dcard.append(newdealer.addcard(newshoe.shoecard))
         if (toDouble(inputmoney.text) == nil){
             let alertController = UIAlertController(title: "Warning", message: "Error input", preferredStyle:UIAlertControllerStyle.Alert)
             alertController.addAction(UIAlertAction(title: "Back", style: UIAlertActionStyle.Default,handler: nil))
@@ -67,21 +73,21 @@ class ViewController: UIViewController {
             return
         }
         betmoney = inputmoney.text.toInt()!
-        if (betmoney < 1 || betmoney > initmoney){
+        if (betmoney < 1 || betmoney > fplayer.pmoney){
             let alertController = UIAlertController(title: "Warning", message: "Error input", preferredStyle:UIAlertControllerStyle.Alert)
             alertController.addAction(UIAlertAction(title: "Back", style: UIAlertActionStyle.Default,handler: nil))
             self.presentViewController(alertController, animated: true, completion: nil)
             return
         }
         yourbet.text = "Bet: \(betmoney)"
-        initmoney = initmoney - betmoney
-        yourmoney.text = "Money: \(initmoney)"
-        dcarddetail = "Hidden,"
-        dcarddetail += newgame.dcard[1].description
-        dealercard.text = dcarddetail
-        pcarddetail = "\(newgame.pcard[0].description)"
-        pcarddetail += newgame.pcard[1].description
+        initmoney = fplayer.pmoney - betmoney
+        yourmoney.text = "Money: \(fplayer.pmoney)"
+        pcarddetail = "\(fplayer.pcard[0].description)"
+        pcarddetail += fplayer.pcard[1].description
         playercard.text = pcarddetail
+        dcarddetail = "Hidden,"
+        dcarddetail += newdealer.dcard[1].description
+        dealercard.text = dcarddetail
         Deal.hidden = true
         inputmoney.hidden = true
         hit.hidden = false
@@ -90,8 +96,8 @@ class ViewController: UIViewController {
         yourbet.hidden = false
         inputbet.hidden = true
         dtotal.hidden = true
-        pscore = caculatescore(newgame.pcard)
-        dscore = caculatescore(newgame.dcard)
+        pscore = fplayer.caculatescore(fplayer.pcard)
+        dscore = newdealer.caculatescore(newdealer.dcard)
         total.text = "Total: \(pscore)"
         if (pscore == 21 && dscore != 21){
             conclusion.text = "You won"
@@ -109,7 +115,6 @@ class ViewController: UIViewController {
     }
     
     @IBAction func restart(sender: AnyObject) {
-        initmoney = 100
         betmoney = 0
         gamecount = 0
         gameover.hidden = true
@@ -122,10 +127,10 @@ class ViewController: UIViewController {
     }
     
     @IBAction func Hit(sender: UIButton) {
-        newgame.pcard.append(newgame.addcard())
-        pcarddetail += newgame.pcard[newgame.pcard.count-1].description
+        fplayer.pcard.append(fplayer.addcard(newshoe.shoecard))
+        pcarddetail += fplayer.pcard[fplayer.pcard.count-1].description
         playercard.text = pcarddetail
-        pscore = caculatescore(newgame.pcard)
+        pscore = fplayer.caculatescore(fplayer.pcard)
         total.text = "Total: \(pscore)"
         if (pscore > 21){
             conclusion.text = "You lose"
@@ -136,11 +141,11 @@ class ViewController: UIViewController {
     
     @IBAction func Stand(sender: AnyObject) {
         while (dscore < 17){
-            newgame.dcard.append(newgame.addcard())
-            dscore = caculatescore(newgame.dcard)
+            newdealer.dcard.append(newdealer.addcard(newshoe.shoecard))
+            dscore = caculatescore(newdealer.dcard)
         }
-        pscore = caculatescore(newgame.pcard)
-        dscore = caculatescore(newgame.dcard)
+        pscore = fplayer.caculatescore(fplayer.pcard)
+        dscore = newdealer.caculatescore(newdealer.dcard)
         if (pscore > 21){
             conclusion.text = "You lose"
         }
@@ -167,8 +172,8 @@ class ViewController: UIViewController {
     
     func showdealer(){
         dcarddetail = ""
-        for i in 0..<newgame.dcard.count{
-            dcarddetail += newgame.dcard[i].description
+        for i in 0..<newdealer.dcard.count{
+            dcarddetail += newdealer.dcard[i].description
         }
         dealercard.text = dcarddetail
     }
@@ -186,11 +191,11 @@ class ViewController: UIViewController {
         dtotal.text = "Total: \(dscore)"
         if (conclusion.text == "You lose"){
         }else if (conclusion.text == "You won"){
-            initmoney += betmoney*2
+            fplayer.pmoney += betmoney*2
         }else if (conclusion.text == "Push"){
-            initmoney += betmoney
+            fplayer.pmoney += betmoney
         }
-        yourmoney.text = "Money: \(initmoney)"
+        yourmoney.text = "Money: \(fplayer.pmoney)"
         if (initmoney < 1){
             gameover.hidden = false
             Deal.hidden = true

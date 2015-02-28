@@ -309,12 +309,12 @@ class ViewController: UIViewController {
         inputmoney.hidden = false
         inputbet.hidden = false
         yourbet.hidden = true
-        conclusion.hidden = true
+        conclusion.text = "Let's play blackjack"
+        conclusion2.text = "Let's play blackjack"
         Deal2.hidden = false
         inputmoney2.hidden = false
         inputbet2.hidden = false
         yourbet2.hidden = true
-        conclusion2.hidden = true
         viewDidLoad()
     }
     
@@ -451,6 +451,10 @@ class ViewController: UIViewController {
         }
         
         if (playernum == 0){
+            yourbet.text = "Game Over"
+            yourbet.hidden = false
+            yourbet2.text = "Game Over"
+            yourbet2.hidden = false
             gameover.hidden = false
         }
         
@@ -515,6 +519,10 @@ class ViewController: UIViewController {
             playernum = playernum - 1
         }
         if (playernum == 0){
+            yourbet.text = "Game Over"
+            yourbet.hidden = false
+            yourbet2.text = "Game Over"
+            yourbet2.hidden = false
             gameover.hidden = false
         }
         
@@ -619,6 +627,10 @@ class ViewController: UIViewController {
         }
         if (playernum == 0){
             gameover.hidden = false
+            yourbet.text = "Game Over"
+            yourbet.hidden = false
+            yourbet2.text = "Game Over"
+            yourbet2.hidden = false
         }
         
         

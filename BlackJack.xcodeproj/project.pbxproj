@@ -19,6 +19,7 @@
 		3F1A7FC81A8FD8070034E1C1 /* BlackJackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1A7FC71A8FD8070034E1C1 /* BlackJackTests.swift */; };
 		3F1A7FD21A8FDCFB0034E1C1 /* card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1A7FD11A8FDCFB0034E1C1 /* card.swift */; };
 		44621C931A906D2000FB31D3 /* game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44621C921A906D2000FB31D3 /* game.swift */; };
+		E01F58A91AA270000022E987 /* ViewController3.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01F58A81AA270000022E987 /* ViewController3.swift */; };
 		E096AC461AA0203600443F72 /* hand.swift in Sources */ = {isa = PBXBuildFile; fileRef = E096AC451AA0203600443F72 /* hand.swift */; };
 		E098B4621AA226F60068C359 /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E098B4611AA226F60068C359 /* ViewController2.swift */; };
 /* End PBXBuildFile section */
@@ -50,6 +51,7 @@
 		3F1A7FC71A8FD8070034E1C1 /* BlackJackTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackJackTests.swift; sourceTree = "<group>"; };
 		3F1A7FD11A8FDCFB0034E1C1 /* card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = card.swift; sourceTree = "<group>"; };
 		44621C921A906D2000FB31D3 /* game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = game.swift; sourceTree = "<group>"; };
+		E01F58A81AA270000022E987 /* ViewController3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController3.swift; sourceTree = "<group>"; };
 		E096AC451AA0203600443F72 /* hand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = hand.swift; sourceTree = "<group>"; };
 		E098B4611AA226F60068C359 /* ViewController2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -96,6 +98,7 @@
 				3F1A7FB11A8FD8070034E1C1 /* AppDelegate.swift */,
 				3F1A7FB31A8FD8070034E1C1 /* ViewController.swift */,
 				E098B4611AA226F60068C359 /* ViewController2.swift */,
+				E01F58A81AA270000022E987 /* ViewController3.swift */,
 				3F1A7FB51A8FD8070034E1C1 /* Main.storyboard */,
 				3F1A7FBA1A8FD8070034E1C1 /* LaunchScreen.xib */,
 				3F1A7FD11A8FDCFB0034E1C1 /* card.swift */,
@@ -236,6 +239,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E01F58A91AA270000022E987 /* ViewController3.swift in Sources */,
 				3F1A7FD21A8FDCFB0034E1C1 /* card.swift in Sources */,
 				3F1A7FB41A8FD8070034E1C1 /* ViewController.swift in Sources */,
 				3F1A7FB21A8FD8070034E1C1 /* AppDelegate.swift in Sources */,

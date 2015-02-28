@@ -25,17 +25,41 @@ class ViewController2: UIViewController{
     }
     
     @IBAction func oplayerclick(sender: AnyObject) {
-        
-    }
-    
-    @IBAction func tplayerclick(sender: AnyObject) {
-        if (toDouble(inputdeck.text) == nil){
+        var decknum = inputdeck.text.toInt()
+        if (inputdeck.text == ""){
+            decknum = 3
+        }else{
+            if (toDouble(inputdeck.text) == nil){
+                let alertController = UIAlertController(title: "Warning", message: "Error input", preferredStyle:UIAlertControllerStyle.Alert)
+                alertController.addAction(UIAlertAction(title: "Back", style: UIAlertActionStyle.Default,handler: nil))
+                self.presentViewController(alertController, animated: true, completion: nil)
+                return
+            }
+        }
+        if (decknum < 1){
             let alertController = UIAlertController(title: "Warning", message: "Error input", preferredStyle:UIAlertControllerStyle.Alert)
             alertController.addAction(UIAlertAction(title: "Back", style: UIAlertActionStyle.Default,handler: nil))
             self.presentViewController(alertController, animated: true, completion: nil)
             return
         }
+        
+        self.numDeck = decknum!
+        
+        self.performSegueWithIdentifier("btn2", sender: self)
+    }
+    
+    @IBAction func tplayerclick(sender: AnyObject) {
         var decknum = inputdeck.text.toInt()
+        if (inputdeck.text == ""){
+            decknum = 3
+        }else{
+            if (toDouble(inputdeck.text) == nil){
+                let alertController = UIAlertController(title: "Warning", message: "Error input", preferredStyle:UIAlertControllerStyle.Alert)
+                alertController.addAction(UIAlertAction(title: "Back", style: UIAlertActionStyle.Default,handler: nil))
+                self.presentViewController(alertController, animated: true, completion: nil)
+                return
+            }
+        }
         if (decknum < 1){
             let alertController = UIAlertController(title: "Warning", message: "Error input", preferredStyle:UIAlertControllerStyle.Alert)
             alertController.addAction(UIAlertAction(title: "Back", style: UIAlertActionStyle.Default,handler: nil))
@@ -51,6 +75,10 @@ class ViewController2: UIViewController{
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "btn"{
             var obj = segue.destinationViewController as ViewController
+            obj.numDeck = self.numDeck
+        }
+        if segue.identifier == "btn2"{
+            var obj = segue.destinationViewController as ViewController3
             obj.numDeck = self.numDeck
         }
     }

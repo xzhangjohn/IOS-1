@@ -9,6 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController {
+    var numDeck: Int = Int()
     var betmoney = 0
     var betmoney2 = 0
     var dcarddetail = ""
@@ -29,7 +30,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        newshoe = shoe(decknum: 3)
+        newshoe = shoe(decknum: numDeck)
         newdealer = dealer(dcard: [],dscore: 0)
         fplayer = player(pcard: [],pscore: 0, pmoney: 100)
         splayer = player(pcard: [],pscore: 0, pmoney: 100)

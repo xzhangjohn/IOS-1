@@ -4,10 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--View Controller2-->
         <scene sceneID="9Rv-1F-Hsb">
             <objects>
-                <viewController id="Utx-Dm-9VM" sceneMemberID="viewController">
+                <viewController id="Utx-Dm-9VM" customClass="ViewController2" customModule="BlackJack" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1Do-Ka-2BI"/>
                         <viewControllerLayoutGuide type="bottom" id="QDG-7U-OJo"/>
@@ -22,6 +22,9 @@
                                 <state key="normal" title="Single Player">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="oplayerclick:" destination="Utx-Dm-9VM" eventType="touchUpInside" id="uac-pe-a3h"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rD9-Ag-Bzc">
                                 <rect key="frame" x="107" y="222" width="116" height="48"/>
@@ -30,7 +33,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="modal" id="saM-8f-72t"/>
+                                    <action selector="tplayerclick:" destination="Utx-Dm-9VM" eventType="touchUpInside" id="kl5-I8-pRf"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="BlackJack" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vm5-kD-Ili">
@@ -54,6 +57,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="inputdeck" destination="EWA-qj-5XX" id="fhM-Fv-fHp"/>
+                        <outlet property="splayer" destination="lWE-Hu-OWy" id="YKs-gO-YpK"/>
+                        <outlet property="tplayer" destination="rD9-Ag-Bzc" id="d7b-y7-KrE"/>
+                        <segue destination="BYZ-38-t0r" kind="modal" identifier="btn" id="TtC-ie-blF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lgr-fb-cKy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

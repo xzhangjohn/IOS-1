@@ -7,12 +7,3 @@
 //
 
 import Foundation
-class dealer: hand {
-    var dcard: [BlackJackCard]
-    var dscore: Int
-    init(dcard: [BlackJackCard], dscore: Int){
-        self.dcard = dcard
-        self.dscore = dscore
-        super.init()
-    }
-}

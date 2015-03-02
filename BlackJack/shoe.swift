@@ -9,18 +9,17 @@
 import Foundation
 
 class shoe{
-    var shoecard = [BlackJackCard]()
+    var decknum = 3
+    var shoecard = [deck]()
     
-    init(decknum: Int) {
-        initshoe(decknum)
-    }
-    
-    func initshoe(decknum: Int) {
-        var newdeck: deck = deck()
+    func initshoe() {
         for i in 0..<decknum{
-            for j in 0..<newdeck.deckcard.count{
-                shoecard.append(newdeck.deckcard[j])
-            }
+            var newdeckcard: deck = deck()
+            //newdeckcard = deck()
+            shoecard.append(newdeckcard)
         }
+        
     }
+    
+    
 }

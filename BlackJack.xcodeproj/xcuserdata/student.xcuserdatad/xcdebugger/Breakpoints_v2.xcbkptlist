@@ -41,7 +41,7 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "BlackJack/Initcard.swift"
+            filePath = "BlackJack/card.swift"
             timestampString = "445658681.01153"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
